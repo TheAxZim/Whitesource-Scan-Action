@@ -1,6 +1,6 @@
-# This is a basic workflow to help you get started with Actions
 
 name: CI
+
 on:
   push:
     branches: [ master ]
@@ -18,6 +18,6 @@ jobs:
       uses: ./
       with:
         wssUrl: https://app-eu.whitesourcesoftware.com/agent
-        apiKey: fakeKey123 #Fetch from Github Secrets
+        apiKey: ${{ secrets.WSS_API_KEY }}
         productName: TestProduct
         projectName: WSS-Action
