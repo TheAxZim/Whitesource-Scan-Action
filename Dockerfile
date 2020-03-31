@@ -1,4 +1,4 @@
-FROM openjdk:7
+FROM whitesourcesoftware/ua-base:v1
 
 LABEL version="1.0.0"
 LABEL repository="https://github.com/TheAxZim/Whitesource-Scan-Action"
