@@ -37,8 +37,8 @@ jobs:
       with:
         wssUrl: https://app-eu.whitesourcesoftware.com/agent
         apiKey: ${{ secrets.WSS_API_KEY }}
-        productName: 'Web/API/Mobile'
-        projectName: 'My Repository'
+        productName: 'Microservices'
+        projectName: 'My-Example-Microservice'
 
 ```
 
