@@ -7,8 +7,8 @@ if [ -z "$INPUT_APIKEY" ]; then
   exit 126
 fi
 
-if [ -z "$INPUT_PROJECTNAME" ]; then
-  echo "Project Name must be set."
+if [ -z "$INPUT_CONFIGFILE" ] && [ -z "$INPUT_PROJECTNAME" ]; then
+  echo "'projectName' or 'configFile' path must be set."
   exit 126
 fi
 
