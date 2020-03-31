@@ -1,5 +1,5 @@
 
-name: CI
+name: Whitesource Security Scan
 
 on:
   push:
@@ -10,14 +10,12 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v2
-
     - name: Run Whitesource Action
       uses: ./
       with:
         wssUrl: https://app-eu.whitesourcesoftware.com/agent
         apiKey: ${{ secrets.WSS_API_KEY }}
-        productName: TestProduct
-        projectName: WSS-Action
+        productName: 'Web/API/Mobile'
+        projectName: 'My Repository'
