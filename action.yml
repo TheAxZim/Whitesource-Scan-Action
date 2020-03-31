@@ -1,6 +1,6 @@
 name: 'Whitesource Unified Agent Scan'
 author: 'Azeem Shezad Ilyas'
-description: 'Run a scan using the Whitesource unified agent. This version uses auto-resolve dependencies so it does not require a config file.'
+description: 'Run a scan using the Whitesource unified agent.'
 inputs:
   wssURL:
     description: 'The relevent URL to your orgs WS Server. Can be found under the Integrate tab of your Whitesource dashboard (e.g. https://app-eu.whitesourcesoftware.com/agent).'
