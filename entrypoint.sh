@@ -13,7 +13,7 @@ if [ -z "$INPUT_CONFIGFILE" ] && [ -z "$INPUT_PROJECTNAME" ]; then
 fi
 
 PRODUCT_NAME_STR=""
-if [ -z "$INPUT_PRODUCTNAME" ]; then
+if [ -n "$INPUT_PRODUCTNAME" ]; then
   PRODUCT_NAME_STR="-product $INPUT_PRODUCTNAME"
 fi
 
