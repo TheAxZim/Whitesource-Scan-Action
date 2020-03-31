@@ -14,6 +14,12 @@ inputs:
   projectName:
     description: 'Name of the Project. It could be just repository name.'
     required: true
+  configFile:
+    description: 'Filename of whitesource configuration (including file path)'
+    required: false
+  extraCommandsFile:
+    description: 'Filename of a file to run before the scan begins.'
+    required: false
 runs:
   using: 'docker'
   image: 'Dockerfile'

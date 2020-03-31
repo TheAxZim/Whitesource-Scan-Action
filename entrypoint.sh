@@ -12,19 +12,25 @@ if [ -z "$INPUT_PROJECTNAME" ]; then
   exit 126
 fi
 
-PRODUCT_NAME=""
+PRODUCT_NAME_STR=""
 if [ -z "$INPUT_PRODUCTNAME" ]; then
-  PRODUCT_NAME=$GITHUB_ACTOR
-else
-  PRODUCT_NAME=$INPUT_PRODUCTNAME
+  PRODUCT_NAME_STR="-product $INPUT_PRODUCTNAME"
 fi
 
-echo "WSS Url: $INPUT_WSSURL"
-echo "API Key: $INPUT_APIKEY"
-echo "Product Name: $INPUT_PRODUCTNAME"
-echo "Project Name: $INPUT_PROJECTNAME"
-
+# Download latest Unified Agent release from Whitesource
 curl -LJO  https://github.com/whitesource/unified-agent-distribution/releases/latest/download/wss-unified-agent.jar
 
-java -jar wss-unified-agent.jar -noConfig true -apiKey $INPUT_APIKEY -project "$INPUT_PROJECTNAME" -product "$PRODUCT_NAME" \
-  -d . -wss.url $INPUT_WSSURL -generateScanReport true -resolveAllDependencies true
+# Run additional commands if necessary
+if [ -n "$INPUT_EXTRACOMMANDSFILE" ]; then
+  echo "Executing file: $INPUT_EXTRACOMMANDSFILE"
+  chmod +x $INPUT_EXTRACOMMANDSFILE
+  ./$INPUT_EXTRACOMMANDSFILE
+fi
+
+# Execute Unified Agent (2 settings)
+if [ -z  "$INPUT_CONFIGFILE" ]; then
+  java -jar wss-unified-agent.jar -noConfig true -apiKey $INPUT_APIKEY -project "$INPUT_PROJECTNAME" $PRODUCT_NAME_STR\
+    -d . -wss.url $INPUT_WSSURL -resolveAllDependencies true
+else
+  java -jar wss-unified-agent.jar -apiKey $INPUT_APIKEY -c "$INPUT_CONFIGFILE" -d .
+fi
