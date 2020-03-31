@@ -6,8 +6,9 @@ A Github action which uses the Whitesource Unified Agent to scan a given reposit
     - For more advanced use, please fork and integrate for your own need.
     - Please raise an issue for a specific request e.g. additional configuration. I will update this over time.
     
-# Example Usage
+# Example Usage (Quick Setup without Config File)
 
+Uses Auto Resolve Dependencies flag.
 You must have the Whitesource API key set in your Github secrets. 
 
 ```
@@ -32,4 +33,10 @@ jobs:
         apiKey: ${{ secrets.WSS_API_KEY }}
         productName: 'Web/API/Mobile'
         projectName: 'My Repository'
+```
+
+# Example Usage (With Config File)
+
+```
+#To be updated
 ```
