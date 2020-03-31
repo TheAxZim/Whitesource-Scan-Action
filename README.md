@@ -17,7 +17,7 @@ For Details Unified Agent configuration, please see the page [Unified Agent Conf
 Uses the Auto Resolve Dependencies flag.
 You must have the Whitesource API key set in your Github secrets. 
 
-```
+```yaml
 name: Whitesource Security Scan Example
 
 on:
@@ -44,7 +44,7 @@ jobs:
 
 ### Example Usage (With Config File and optionally install file)
 
-```
+```yaml
 name: Whitesource Security Scan Example
 
 on:
