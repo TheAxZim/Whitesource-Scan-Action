@@ -1,12 +1,16 @@
 # Whitesource Scan Using Unified Agent
 
-A Github action which uses the Whitesource Unified Agent to scan a given repository. This Action will auto-resolve dependencies, so no configuration file is required.
+A Github action which uses the Whitesource Unified Agent to scan a given repository. This Action will auto-resolve dependencies, so no configuration file is required (unless specified).
 
-- This is a quick scan of a repository with minimal configuration.
-    - For more advanced use, please fork and integrate for your own need.
-    - Please raise an issue for a specific request e.g. additional configuration. I will update this over time.
+- This action offers a quick scan of a repository with minimal configuration.
+    - For more advanced use, please include a config file.
+    - If you need to perform some commands beforehand, please also include the path to the script file.
+
+    - Please raise an issue for a specific request e.g. alternative configuration. I will update this over time.
     
-# Example Usage (Quick Setup without Config File)
+## Usage
+
+### Example Usage (Quick Setup without Config File)
 
 Uses Auto Resolve Dependencies flag.
 You must have the Whitesource API key set in your Github secrets. 
@@ -35,7 +39,7 @@ jobs:
         projectName: 'My Repository'
 ```
 
-# Example Usage (With Config File)
+### Example Usage (With Config File)
 
 ```
 #To be updated
