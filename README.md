@@ -8,11 +8,13 @@ A Github action which uses the Whitesource Unified Agent to scan a given reposit
 
     - Please raise an issue for a specific request e.g. alternative configuration. I will update this over time.
     
+For Details Unified Agent configuration, please see the page [Unified Agent Configuration File and Parameters](https://whitesource.atlassian.net/wiki/spaces/WD/pages/804814917/Unified+Agent+Configuration+File+and+Parameters)
+
 ## Usage
 
 ### Example Usage (Quick Setup without Config File)
 
-Uses Auto Resolve Dependencies flag.
+Uses the Auto Resolve Dependencies flag.
 You must have the Whitesource API key set in your Github secrets. 
 
 ```
@@ -31,16 +33,38 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Run Whitesource Action
-      uses: TheAxZim/Whitesource-Scan-Action
+      uses: TheAxZim/Whitesource-Scan-Action@v1.0.0
       with:
         wssUrl: https://app-eu.whitesourcesoftware.com/agent
         apiKey: ${{ secrets.WSS_API_KEY }}
         productName: 'Web/API/Mobile'
         projectName: 'My Repository'
-```
-
-### Example Usage (With Config File)
 
 ```
-#To be updated
+
+### Example Usage (With Config File and optionally install file)
+
+```
+name: Whitesource Security Scan Example
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Run Whitesource Action
+      uses: TheAxZim/Whitesource-Scan-Action@v1.0.0
+      with:
+        wssUrl: https://app-eu.whitesourcesoftware.com/agent
+        apiKey: ${{ secrets.WSS_API_KEY }}
+        configFile: 'whitesource-fs-agent.config'
+        extraCommandsFile: 'install_commands.sh'
+
 ```
