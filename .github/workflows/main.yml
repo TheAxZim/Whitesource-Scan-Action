@@ -14,10 +14,10 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: Run a one-line script
-      run: echo Hello, world! Tes
-
-    - name: Run a multi-line script
-      run: |
-        echo Add other actions to build,
-        echo test, and deploy your project.
+    - name: Run Whitesource Action
+      uses: ./
+      with:
+        wssUrl: https://app-eu.whitesourcesoftware.com/agent
+        apiKey: fakeKey123 #Fetch from Github Secrets
+        productName: TestProduct
+        projectName: WSS-Action
