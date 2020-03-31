@@ -65,6 +65,6 @@ jobs:
         wssUrl: https://app-eu.whitesourcesoftware.com/agent
         apiKey: ${{ secrets.WSS_API_KEY }}
         configFile: 'whitesource-fs-agent.config'
-        extraCommandsFile: 'install_commands.sh'
+        extraCommandsFile: 'install_commands.sh' # Optional Extra
 
 ```
