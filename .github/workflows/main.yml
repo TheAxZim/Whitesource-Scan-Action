@@ -17,4 +17,5 @@ jobs:
       with:
         wssUrl: https://app-eu.whitesourcesoftware.com/agent
         apiKey: ${{ secrets.WSS_API_KEY }}
-        configFile: 'wss-unified-agent.config'
+        productName: 'Microservices'
+        projectName: 'My-Example-Microservice'
