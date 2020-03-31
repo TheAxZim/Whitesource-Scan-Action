@@ -19,7 +19,12 @@ else
   PRODUCT_NAME=$INPUT_PRODUCTNAME
 fi
 
+echo "WSS Url: $INPUT_WSSURL"
+echo "API Key: $INPUT_APIKEY"
+echo "Product Name: $INPUT_PRODUCTNAME"
+echo "Project Name: $INPUT_PROJECTNAME"
+
 curl -LJO  https://github.com/whitesource/unified-agent-distribution/releases/latest/download/wss-unified-agent.jar
 
 java -jar wss-unified-agent.jar -noConfig true -apiKey $INPUT_APIKEY -project $INPUT_PROJECTNAME -product $PRODUCT_NAME \
-  -d . -wss.url $INPUT_WSSURL -generateScanReport true --resolveAllDependencies true
+  -d . -wss.url $INPUT_WSSURL -generateScanReport true -resolveAllDependencies true
