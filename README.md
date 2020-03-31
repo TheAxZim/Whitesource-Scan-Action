@@ -3,7 +3,7 @@
 A Github action which uses the Whitesource Unified Agent to scan a given repository. This Action will auto-resolve dependencies, so no configuration file is required (unless specified).
 
 - This action offers a quick scan of a repository with minimal configuration.
-    - For more advanced use, please include a config file.
+    - **For more advanced use, please include a config file. (See usage below)**
     - If you need to perform some commands beforehand, please also include the path to the script file.
 
     - Please raise an issue for a specific request e.g. alternative configuration. I will update this over time.
