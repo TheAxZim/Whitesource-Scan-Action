@@ -33,8 +33,10 @@ jarsigner -verify  wss-unified-agent.jar
 if [ -z  "$INPUT_CONFIGFILE" ]; then
   java -jar wss-unified-agent.jar -noConfig true -apiKey $INPUT_APIKEY -project "$INPUT_PROJECTNAME" $PRODUCT_NAME_STR\
     -d . -wss.url $INPUT_WSSURL -resolveAllDependencies true
-  echo "WS exit code: $?"
 else
   java -jar wss-unified-agent.jar -apiKey $INPUT_APIKEY -c "$INPUT_CONFIGFILE" -d .
-  echo "WS exit code: $?"
 fi
+
+WS_EXIT_CODE=$?
+echo "WS exit code: $WS_EXIT_CODE"
+exit $WS_EXIT_CODE
