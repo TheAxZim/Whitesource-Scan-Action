@@ -27,6 +27,8 @@ if [ -n "$INPUT_EXTRACOMMANDSFILE" ]; then
   ./$INPUT_EXTRACOMMANDSFILE
 fi
 
+jarsigner -verify  wss-unified-agent.jar
+
 # Execute Unified Agent (2 settings)
 if [ -z  "$INPUT_CONFIGFILE" ]; then
   java -jar wss-unified-agent.jar -noConfig true -apiKey $INPUT_APIKEY -project "$INPUT_PROJECTNAME" $PRODUCT_NAME_STR\
