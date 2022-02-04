@@ -27,9 +27,8 @@ if [ -n "$INPUT_EXTRACOMMANDSFILE" ]; then
   ./$INPUT_EXTRACOMMANDSFILE
 fi
 
+# verify jar signature
 jarsigner -verify  wss-unified-agent.jar
-
-WS_GENERATEPROJECTDETAILSJSON=true
 
 # don't exit if unified agent exits with error code
 set +e
