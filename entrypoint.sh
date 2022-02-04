@@ -29,6 +29,7 @@ fi
 
 jarsigner -verify  wss-unified-agent.jar
 
+WS_GENERATEPROJECTDETAILSJSON=true
 # Execute Unified Agent (2 settings)
 if [ -z  "$INPUT_CONFIGFILE" ]; then
   java -jar wss-unified-agent.jar -noConfig true -apiKey $INPUT_APIKEY -project "$INPUT_PROJECTNAME" $PRODUCT_NAME_STR\
@@ -39,4 +40,7 @@ fi
 
 WS_EXIT_CODE=$?
 echo "WS exit code: $WS_EXIT_CODE"
+
+./list-project-alerts.sh
+
 exit $WS_EXIT_CODE
