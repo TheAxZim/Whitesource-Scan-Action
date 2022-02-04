@@ -65,5 +65,6 @@ ENV GOPATH ${WSS_USER_HOME}/gopath
 ENV PATH $GOROOT/bin:$GOPATH/bin:$PATH
 
 COPY entrypoint.sh /entrypoint.sh
+COPY list-project-alerts.sh /list-project-alerts.sh
 
 ENTRYPOINT ["/entrypoint.sh"]
