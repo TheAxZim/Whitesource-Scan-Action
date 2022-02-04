@@ -27,16 +27,6 @@ RUN apt-get update && \
 	rm -rf /tmp/*
 
 
-### add a new group + user without root premmsions
-ENV WSS_GROUP wss-group
-ENV WSS_USER wss-scanner
-ENV WSS_USER_HOME=/home/${WSS_USER}
-
-RUN groupadd ${WSS_GROUP} && \
-	useradd --gid ${WSS_GROUP} --groups 0 --shell /bin/bash --home-dir ${WSS_USER_HOME} --create-home ${WSS_USER} && \
-	passwd -d ${WSS_USER}
-
-
 ### Install Java openjdk 8
 RUN echo "deb http://ppa.launchpad.net/openjdk-r/ppa/ubuntu bionic main" | tee /etc/apt/sources.list.d/ppa_openjdk-r.list && \
     apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys DA1A4A13543B466853BAF164EB9B1D8886F44E2A && \
@@ -54,14 +44,15 @@ RUN apt-get update && \
 	rm -rf /var/lib/apt/lists/* && \
 	rm -rf /tmp/*
 
+RUN apt-get update && apt-get install -y jq
+
 #### Install GO:
 ARG GOLANG_VERSION=1.17.6
-USER ${WSS_USER}
-RUN mkdir -p ${WSS_USER_HOME}/goroot && \
-   curl https://storage.googleapis.com/golang/go${GOLANG_VERSION}.linux-amd64.tar.gz | tar xvzf - -C ${WSS_USER_HOME}/goroot --strip-components=1
+RUN mkdir -p goroot && \
+   curl https://storage.googleapis.com/golang/go${GOLANG_VERSION}.linux-amd64.tar.gz | tar xvzf - -C /goroot --strip-components=1
 ### Set GO environment variables
-ENV GOROOT ${WSS_USER_HOME}/goroot
-ENV GOPATH ${WSS_USER_HOME}/gopath
+ENV GOROOT goroot
+ENV GOPATH gopath
 ENV PATH $GOROOT/bin:$GOPATH/bin:$PATH
 
 COPY entrypoint.sh /entrypoint.sh
