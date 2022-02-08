@@ -43,6 +43,8 @@ fi
 WS_EXIT_CODE=$?
 echo "WS exit code: $WS_EXIT_CODE"
 
-/list-project-alerts.sh
+if [ -n "$WS_USERKEY" ] && [ "$WS_GENERATEPROJECTDETAILSJSON" == "true" ]; then
+  /list-project-alerts.sh
+fi
 
 exit $WS_EXIT_CODE
