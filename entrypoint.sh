@@ -30,6 +30,9 @@ fi
 # verify jar signature
 jarsigner -verify  wss-unified-agent.jar
 
+#unset GOROOT passed automatically by setup-go
+unset GOROOT
+
 # don't exit if unified agent exits with error code
 set +e
 # Execute Unified Agent (2 settings)
