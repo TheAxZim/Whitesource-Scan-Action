@@ -48,11 +48,12 @@ RUN apt-get update && apt-get install -y jq
 
 #### Install GO:
 ARG GOLANG_VERSION=1.17.6
-RUN mkdir -p goroot && \
-   curl https://storage.googleapis.com/golang/go${GOLANG_VERSION}.linux-amd64.tar.gz | tar xvzf - -C /goroot --strip-components=1
+ARG GOROOT=/opt/go
+RUN mkdir -p ${GOROOT} && \
+   curl https://storage.googleapis.com/golang/go${GOLANG_VERSION}.linux-amd64.tar.gz | tar xvzf - -C ${GOROOT} --strip-components=1
 ### Set GO environment variables
-ENV GOROOT goroot
-ENV GOPATH gopath
+ENV GOROOT ${GOROOT}
+ENV GOPATH $HOME/go
 ENV PATH $GOROOT/bin:$GOPATH/bin:$PATH
 
 COPY entrypoint.sh /entrypoint.sh
