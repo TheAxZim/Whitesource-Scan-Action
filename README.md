@@ -35,7 +35,7 @@ jobs:
     - name: Run Whitesource Action
       uses: TheAxZim/Whitesource-Scan-Action@v1.0.0
       with:
-        wssUrl: https://app-eu.whitesourcesoftware.com/agent
+        wssURL: https://app-eu.whitesourcesoftware.com/agent
         apiKey: ${{ secrets.WSS_API_KEY }}
         productName: 'Microservices'
         projectName: 'My-Example-Microservice'
@@ -62,7 +62,7 @@ jobs:
     - name: Run Whitesource Action
       uses: TheAxZim/Whitesource-Scan-Action@v1.0.0
       with:
-        wssUrl: https://app-eu.whitesourcesoftware.com/agent
+        wssURL: https://app-eu.whitesourcesoftware.com/agent
         apiKey: ${{ secrets.WSS_API_KEY }}
         configFile: 'whitesource-fs-agent.config'
 
