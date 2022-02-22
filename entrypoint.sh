@@ -30,6 +30,13 @@ if [ -n "$INPUT_PRODUCTNAME" ]; then
   PRODUCT_NAME_STR="-product $INPUT_PRODUCTNAME"
 fi
 
+if [ "$INPUT_FAILBUILDONPOLICYVIOLATIONS" == "true" ]; then
+  WS_CHECKPOLICIES=true
+  WS_FORCECHECKALLDEPENDENCIES=true
+  WS_FORCEUPDATE=true
+  WS_FORCEUPDATE_FAILBUILDONPOLICYVIOLATION=true
+fi
+
 # Download latest Unified Agent release from Whitesource
 curl -LJO  https://github.com/whitesource/unified-agent-distribution/releases/latest/download/wss-unified-agent.jar
 
