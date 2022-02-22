@@ -12,14 +12,18 @@ inputs:
     description: 'Name of the Product that this project falls under.'
     required: false
   projectName:
-    description: 'Name of the Project. It could be just repository name.'
+    description: 'Name of the Project. It could be just repository name. Default: Repository Name without owner.'
     required: false
   configFile:
-    description: 'Filename of whitesource configuration (including file path)'
+    description: 'Filename of whitesource configuration if being used (including file path)'
     required: false
   extraCommandsFile:
     description: 'Filename of a file to run before the scan begins.'
     required: false
+  failBuildOnPolicyViolations:
+    description: '(true/false) Enables Policy violation checks. Still updates inventory and will fail the build when a policy violation is found.'
+    required: false
+    default: false
 runs:
   using: 'docker'
   image: 'Dockerfile'
